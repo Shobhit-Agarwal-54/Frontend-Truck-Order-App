@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Truck-Order App",
+    "slug": "truck-order-app",
+    "description": "Make the process of tracking and updating warehouse details super efficient.",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/truck-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-screen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "45e7c021-afcc-4a7e-b3ea-1bb22c3d4cdf"
+      }
+    }
+  }
+}
