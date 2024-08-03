@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shobhit_agarwal.truckorderapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -28,6 +29,12 @@
       "eas": {
         "projectId": "45e7c021-afcc-4a7e-b3ea-1bb22c3d4cdf"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/45e7c021-afcc-4a7e-b3ea-1bb22c3d4cdf"
     }
   }
 }

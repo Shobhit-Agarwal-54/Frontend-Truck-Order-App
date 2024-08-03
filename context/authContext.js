@@ -22,9 +22,9 @@ const AuthProvider=({children})=>{
     useEffect(()=>{
         const loadLocalStorageData=async()=>{
             let data=await AsyncStorage.getItem("@auth");
-            console.log("Loading Local Storage data");
+            // console.log("Loading Local Storage data");
             let loginData=JSON.parse(data);
-            console.log(loginData);
+            // console.log(loginData);
             setState({...state,user:loginData?.user,token:loginData?.token});
         };
         loadLocalStorageData();  

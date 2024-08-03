@@ -13,7 +13,7 @@ const About = () => {
   const getAllPendingOrders=async()=>
     {
      const {data}= await axios.get("/getAllPendingOrders");
-      console.log(data.Orders);
+      // console.log(data.Orders);
       setOrders(data.Orders);
       setAllOrders(data.Orders);
     }

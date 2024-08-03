@@ -55,8 +55,27 @@ const Post =  ({navigation}) => {
       {
         getOrders();
         LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+        LogBox.ignoreAllLogs();
+        console.warn = () => {};
       },[]);
   
+      if (__DEV__) {
+        const ignoreWarns = [              
+          "VirtualizedLists should never be nested inside plain ScrollViews",              
+        ];
+      
+        const warn = console.error;
+        console.error = (...arg) => {
+          for (const warning of ignoreWarns) {
+            if (arg[0].startsWith(warning)) {
+              return;
+            }
+          }
+          warn(...arg);
+        };
+        
+      }
+      LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   const handleClientSearch= (query)=>
     {
        const formattedQuery= query.toLowerCase();
@@ -110,9 +129,9 @@ const Post =  ({navigation}) => {
           ProductName:productName,
           ClientName:selectedClient,
         });
-        console.log(data.TotalBalancedQuantity);
+        // console.log(data.TotalBalancedQuantity);
         setBalancedQuantity(data.TotalBalancedQuantity);
-        console.log(data);
+        // console.log(data);
       }
 
       const createTruck=async()=>{
@@ -122,7 +141,7 @@ const Post =  ({navigation}) => {
         WeightLoaded:liftedQuantity,
         TruckNumber:truckNumber
       });
-      console.log(data);
+      // console.log(data);
       // setFullTruck([...fullTruck,data.data]);
       alert("Truck Details Created Successfully");
       navigation.navigate("Home");
@@ -131,7 +150,9 @@ const Post =  ({navigation}) => {
       const emptyfunction=(par)=>{
 
       }
-        
+
+      // console.error = () => {};
+      // The above line will remove all types of error logs from the terminal
       return (
         <View style={styles.container}>
           <ScrollView>

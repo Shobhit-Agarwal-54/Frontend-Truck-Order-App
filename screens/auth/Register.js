@@ -10,28 +10,6 @@ const Register = ({navigation}) => {
     const [password,setPassword]=useState("");
     const[loading,setLoading]=useState(false);
 
-    // function
-    const handleSubmitAdmin=async ()=>{
-        try {
-            setLoading(true);
-            if(!name || !email || !password)
-                {
-                    setLoading(false);
-                     Alert.alert("Please fill all the details");
-                     return;
-                }
-                setLoading(false);
-              const {data}= await axios.post("/createAdmin",{name,email,password});
-              alert(data.message);  
-                navigation.navigate("Login");
-              console.log("Register Details ===>",{name,email,password});
-        } catch (error) {
-            alert(error.response.data.message);
-            setLoading(false);
-            console.log(error);
-        }
-    }
-
     const handleSubmitOperator=async()=>{
         try {
             setLoading(true);
@@ -45,7 +23,7 @@ const Register = ({navigation}) => {
                 const {data}= await axios.post("/createOperator",{name,email,password});
               alert(data.message);
               navigation.navigate("Login");
-                console.log("Register Details ===>",{name,email,password});
+                // console.log("Register Details ===>",{name,email,password});
         } catch (error) {
             alert(error.response.data.message);
             setLoading(false);
@@ -63,8 +41,6 @@ const Register = ({navigation}) => {
       <InputBox inputTitle="Password" secureTextEntry={true}
        autoComplete="password" value={password} setValue={setPassword}/>
     </View>
-    {/* <Text>{JSON.stringify({name,email,password},null,4)}</Text> */}
-    <SubmitButton btntitle="Register As ADMIN" loading={loading} handleSubmit={handleSubmitAdmin}/>
     <SubmitButton btntitle="Register As OPERATOR" loading={loading} handleSubmit={handleSubmitOperator}/>
     <Text style={styles.lineText}>
         Already Registered Please <Text style={styles.link}
@@ -97,3 +73,26 @@ const styles=StyleSheet.create({
    
 });
 export default Register
+
+{/* <SubmitButton btntitle="Register As ADMIN" loading={loading} handleSubmit={handleSubmitAdmin}/> */}
+    // function
+    // const handleSubmitAdmin=async ()=>{
+    //     try {
+    //         setLoading(true);
+    //         if(!name || !email || !password)
+    //             {
+    //                 setLoading(false);
+    //                  Alert.alert("Please fill all the details");
+    //                  return;
+    //             }
+    //             setLoading(false);
+    //           const {data}= await axios.post("/createAdmin",{name,email,password});
+    //           alert(data.message);  
+    //             navigation.navigate("Login");
+    //           console.log("Register Details ===>",{name,email,password});
+    //     } catch (error) {
+    //         alert(error.response.data.message);
+    //         setLoading(false);
+    //         console.log(error);
+    //     }
+    // }

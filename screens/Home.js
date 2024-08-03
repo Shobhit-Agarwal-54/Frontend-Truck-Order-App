@@ -29,7 +29,7 @@ const Home = () =>
       
     const getTruckByDate=async(date)=>{
     const {data}= await axios.post("/getTruckByDate",{createdAt:date});
-    console.log(data);
+    // console.log(data);
     setChangeTruck(data.data);
     }
 
@@ -37,51 +37,16 @@ const Home = () =>
         ()=>{
              const today= getTodayDate();
              setTruckDate(today);
-             console.log(today);
+            //  console.log(today);
               getTruckByDate(today);
       },
       [fullTruck]
     );
 
-    // const emptyfunction=()=>{
-
-    // }
-
-    // const searchFunction=(query)=>{
-    //   const formattedQuery= query.toLowerCase();
-    //   const filteredData=filter(fullTruck,(user)=>{
-    //     return contains(user,formattedQuery);
-    //   });
-    //   setChangeTruck(filteredData);
-    // }
-
-    // const contains=({ClientName,ProductName,createdAt},query)=>{
-    //   ClientName=ClientName.toLowerCase();
-    //   ProductName=ProductName.toLowerCase();
-    //   createdAt=moment(createdAt).format("DD:MM:YYYY");
-    //   if(ClientName.includes(query)|| ProductName.includes(query)|| createdAt.includes(query) )
-    //     {
-    //       return true;
-    //     }
-    //     else
-    //     {
-    //       return false;
-    //     }
-    // }
-
   return (
     <View style={styles.container} >
         
       <Text style={styles.textHeading}>Total Truck Dispatched on {truckDate}  is  {changeTruck.length}</Text>
-      
-        {/* <PostTextAndBox
-        title="Enter Client or Product or Date"
-        search={search}
-        setSearch={setSearch}
-        handleSearch={searchFunction}
-        setShow={emptyfunction}
-        /> */}
-
         <TouchableOpacity
           style={styles.Button}
           onPress={()=>setShowModal(true)}
@@ -103,10 +68,10 @@ const Home = () =>
           hideExtraDays={true}
           onDayPress={day => 
             {
-          // console.log('selected day', day);
+          
           setTruckDate(day.dateString);
           getTruckByDate(day.dateString);
-          // console.log("Truck Date is ", truckDate);
+          
           setShowModal(false);
           }}
 />
@@ -163,7 +128,6 @@ const styles=StyleSheet.create({
   container:{
       flex:1,
       margin:10,
-      // justifyContent:"space-between",
   },
   
   card:{
@@ -178,3 +142,29 @@ const styles=StyleSheet.create({
 });
 
 export default Home
+
+// const emptyfunction=()=>{
+
+    // }
+
+    // const searchFunction=(query)=>{
+    //   const formattedQuery= query.toLowerCase();
+    //   const filteredData=filter(fullTruck,(user)=>{
+    //     return contains(user,formattedQuery);
+    //   });
+    //   setChangeTruck(filteredData);
+    // }
+
+    // const contains=({ClientName,ProductName,createdAt},query)=>{
+    //   ClientName=ClientName.toLowerCase();
+    //   ProductName=ProductName.toLowerCase();
+    //   createdAt=moment(createdAt).format("DD:MM:YYYY");
+    //   if(ClientName.includes(query)|| ProductName.includes(query)|| createdAt.includes(query) )
+    //     {
+    //       return true;
+    //     }
+    //     else
+    //     {
+    //       return false;
+    //     }
+    // }
